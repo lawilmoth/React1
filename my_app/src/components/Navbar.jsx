@@ -1,5 +1,5 @@
 import styles from './Navbar.module.css'
-
+import { Link } from 'react-router-dom'
 
 export default function Nav(){
     return(
@@ -9,9 +9,9 @@ export default function Nav(){
         </div>
         <div className="nav-section">
             <ul className={styles.navItems}>
-                <li className={styles.navItem}><a className={styles.navLink} href="/">Home</a></li>
-                <li className={styles.navItem}><a className={styles.navLink} href="/">About</a></li>
-                <li className={styles.navItem}><a className={styles.navLink} href="/">Store</a></li>
+                <li className={styles.navItem}><Link className={styles.navLink} to="/">Home</Link></li>
+                <li className={styles.navItem}><Link className={styles.navLink} to="/page2">Page2</Link></li>
+                <li className={styles.navItem}><Link className={styles.navLink} to="/gengars">Gengars</Link></li>
             </ul>
         </div>
     </nav>

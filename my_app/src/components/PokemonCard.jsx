@@ -1,15 +1,20 @@
 import { useState, useEffect } from 'react'
 import styles from "./PokemonCard.module.css"
  
-export default function PokemonCard() {
+export default function PokemonCard(props) {
     const [pokemon, setPokemon] = useState();
     let sprite;
     useEffect( () => {
         async function loadPokemon() {
-                const randNum = Math.floor(Math.random()*400)
-                const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randNum}`);
-                const data = await response.json();
-                setPokemon(data)
+          let randNum
+                if (props.num) {
+                  randNum = props.num
+                } else{
+                  randNum = Math.floor(Math.random()*1025)
+                }
+          const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randNum}`);
+          const data = await response.json();
+          setPokemon(data)
         }
  
         loadPokemon();
