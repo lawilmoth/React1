@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Page2 from './pages/Page2'
 import Gengars from './pages/Gengars'
+import PokemonDetail from './pages/PokemonDetail'
 import { Routes, Route } from "react-router-dom"
 import './App.css'
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Home/> } />  
         <Route path="/page2" element={<Page2/>}  />
         <Route path='/gengars' element={<Gengars/>} />
+        <Route path="/pokemon/:id" element={<PokemonDetail/>} />
       </Routes>
 
 

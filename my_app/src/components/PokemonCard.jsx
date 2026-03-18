@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
 import styles from "./PokemonCard.module.css"
  
 export default function PokemonCard(props) {
@@ -21,25 +22,25 @@ export default function PokemonCard(props) {
     }, []);
  
     return (
+
         <>
             {!pokemon ? (
                 <p>Loading</p>
             ) : (
-              <div className={styles.card}>
-                <h2>{pokemon.name.toUpperCase()}</h2>
-                <div className={styles.imgContainer}>
-                  
-                  <img src={Math.random() < .10 ? sprite = pokemon.sprites.front_shiny : sprite = pokemon.sprites.front_default } alt={pokemon.name} />
-
-                  
-
+              <Link to={`/pokemon/${pokemon.id}`}>
+                <div className={styles.card}>
+                  <h2>{pokemon.name.toUpperCase()}</h2>
+                  <div className={styles.imgContainer}>
+                    
+                    <img src={Math.random() < .10 ? sprite = pokemon.sprites.front_shiny : sprite = pokemon.sprites.front_default } alt={pokemon.name} />
+                  </div>
+                  <p>{pokemon.types[0].type.name}</p>
+                  {pokemon.stats.map( (stat) => (
+                    <p>{stat.stat.name} - {stat.base_stat} </p>
+                  ))}
+                  {console.log(pokemon.stats[0])}
                 </div>
-                <p>{pokemon.types[0].type.name}</p>
-                {pokemon.stats.map( (stat) => (
-                  <p>{stat.stat.name} - {stat.base_stat} </p>
-                ))}
-                {console.log(pokemon.stats[0])}
-              </div>
+              </Link>
             )}
         </>
     )
